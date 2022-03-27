@@ -1,0 +1,46 @@
+{% extends 'mad_libs/navigation.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% block body %}
+    <div class="container mt-3">
+        <div class="row align-items-center">
+            <div class="col-md-6 offset-md-2">
+                <h1 class="text-center">Mad Libs</h1>
+            </div>
+            <div class="col-md-4">
+                {% if user.is_authenticated%}
+                    <a href="{% url 'mad_libs:create_mad_lib' %}" class="btn btn-warning">+ Mad Lib</a>
+                {% endif %}
+            </div>
+        </div>
+        {% for mad_lib in mad_lib_list %}
+        <div class="row align-items-center">
+            <div class="col-md-6 offset-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ mad_lib.mad_lib_name }}</h3>
+                        <h5 class="card-text">{{ mad_lib.mad_lib_desc }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'mad_libs:mad_lib_detail' mad_lib.id%}" class="btn btn-success">Details</a>
+                {% if user.is_authenticated%}
+                <a href="{% url 'mad_libs:update_mad_lib' mad_lib.id%}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'mad_libs:delete_mad_lib' mad_lib.id%}" class="btn btn-danger">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+</body>
+</html>

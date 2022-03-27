@@ -1,0 +1,7 @@
+{% extends 'mad_libs/navigation.html' %}
+{% block body %}
+    <div class="container mt-4">
+        <h1>You have been logged out.</h1>
+        <a href="{% url 'mad_libs:home' %}" class="btn btn-success">Okay</a>
+    </div>
+{% endblock %}

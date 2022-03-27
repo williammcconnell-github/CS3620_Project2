@@ -1,0 +1,50 @@
+{% extends 'mad_libs/navigation.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">{{ mad_lib.mad_lib_name }}</h1>
+        </div>
+        {% if method_is_post == False %}
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <h2>{{ mad_lib.mad_lib_desc }}</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form method="post">
+                    {{ formset.management_form }}
+                    {% csrf_token %}
+                    {% for form in formset %}
+                        {{ form }}
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary mt-3">Generate Mad Lib</button>
+                </form>
+                </div>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <p>{% for string in story_result %}{% if string.is_input %}<span class="text-info fw-bold">{{ string.get_text }}</span>{% else %}{{ string.get_text }}{% endif %}{% endfor %}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <a href="{% url 'mad_libs:mad_lib_detail' mad_lib.id%}" class="btn btn-warning">Reset</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+</body>
+</html>

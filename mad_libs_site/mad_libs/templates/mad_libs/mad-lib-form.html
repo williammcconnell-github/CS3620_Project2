@@ -1,0 +1,54 @@
+{% extends 'mad_libs/navigation.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center">Mad Lib</h1>
+    </div>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Instructions</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h5>Name</h5>
+                    <p class="card-text">Provide a name for the Mad Lib.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Description</h5>
+                    <p class="card-text">Describe what the Mad Lib is about.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Story</h5>
+                    <p class="card-text">Write the story for the Mad Lib, leaving space for user input.</p>
+                    <p class="card-text">The format of user input should be "___---___".</p>
+                    <p class="card-text">Example: I set my ___---___ on the ___---___ kitchen counter.</p>
+                </li>
+                <li class="list-group-item">
+                    <h5>Word List</h5>
+                    <p class="card-text">Write the description that the reader should enter for each blank space in the story, separated by commas.</p>
+                    <p class="card-text">Example: NOUN, ADJECTIVE</p>
+                    <p class="card-text">You should have as many word descriptions as there are spaces for input in the story.</p>
+                </li>
+              </ul>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-primary mt-3">Save</button>
+        </form>
+    </div>
+{% endblock %}
+</body>
+</html>

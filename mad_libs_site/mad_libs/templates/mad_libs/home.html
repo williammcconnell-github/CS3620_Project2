@@ -10,7 +10,40 @@
 </head>
 <body>
 {% block body %}
-    <h1>Home</h1>
+    <div class="container mt-4">
+        <div class="row">
+            <h1 class="text-center">Home</h1>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4 offset-md-1">
+                <div class="card">
+                    <img class="card-img-top rounded-circle" src="https://cdn.iconscout.com/icon/free/png-256/account-avatar-profile-human-man-user-30448.png">
+                    <h5 class="card-header">About Me</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Name:</strong> William McConnell</li>
+                        <li class="list-group-item"><strong>Age:</strong> 29</li>
+                        <li class="list-group-item"><strong>Email:</strong> <a class="email-link" href="mailto: williammcconnell@mail.weber.edu">williammcconnell@mail.weber.edu</a></li>
+                        <li class="list-group-item"><strong>Degree:</strong> Computer Science</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Welcome to my home page</h5>
+                        <p class="card-text">My name is William McConnell. I am a 29-year-old CS student looking to graduate and move into the work force as of the end of this spring.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Mad Libs Site</h5>
+                        <p class="card-text">This is a site that was made with Django, a Python framework.</p>
+                        <p class="card-text">If you would like to do a Mad Lib, please click on the navigation above. Choose from any existing Mad Lib, or login to create your own</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 </body>
 </html>
